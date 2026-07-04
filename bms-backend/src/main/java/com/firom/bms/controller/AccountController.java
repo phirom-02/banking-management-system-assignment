@@ -1,5 +1,7 @@
-package com.firom.bms.controllers;
+package com.firom.bms.controller;
 
+import com.firom.bms.dto.Combo;
+import com.firom.bms.dto.account.AccountComboMetadata;
 import com.firom.bms.dto.account.AccountRequest;
 import com.firom.bms.dto.account.AccountResponse;
 import com.firom.bms.dto.account.AccountStatusRequest;
@@ -14,6 +16,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/accounts")
 @RequiredArgsConstructor
@@ -27,7 +31,7 @@ public class AccountController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<AccountResponse> getById(@PathVariable Long id) {
+    public ResponseEntity<AccountResponse> getById(@PathVariable Integer id) {
         return ResponseEntity.ok(accountService.getById(id));
     }
 
@@ -38,14 +42,21 @@ public class AccountController {
 
     @GetMapping
     public ResponseEntity<Page<AccountResponse>> list(
-            @RequestParam(required = false) Long customerId,
+            @RequestParam(required = false) Integer customerId,
             @RequestParam(required = false) AccountStatus status,
             @PageableDefault(size = 20, sort = "id") Pageable pageable) {
         return ResponseEntity.ok(accountService.list(customerId, status, pageable));
     }
 
     @PatchMapping("/{id}/status")
-    public ResponseEntity<AccountResponse> updateStatus(@PathVariable Long id, @Valid @RequestBody AccountStatusRequest request) {
+    public ResponseEntity<AccountResponse> updateStatus(@PathVariable Integer id, @Valid @RequestBody AccountStatusRequest request) {
         return ResponseEntity.ok(accountService.updateStatus(id, request.getStatus()));
+    }
+
+    @GetMapping("/combo")
+    public ResponseEntity<List<Combo<AccountComboMetadata>>> combo(
+            @RequestParam(required = false) Integer customerId,
+            @RequestParam(required = false, defaultValue = "ACTIVE") String status) {
+        return ResponseEntity.ok(accountService.combo(customerId, status));
     }
 }

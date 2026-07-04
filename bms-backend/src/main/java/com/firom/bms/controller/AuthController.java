@@ -1,4 +1,4 @@
-package com.firom.bms.controllers;
+package com.firom.bms.controller;
 
 import com.firom.bms.dto.auth.LoginRequest;
 import com.firom.bms.dto.auth.LoginResponse;

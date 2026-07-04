@@ -1,4 +1,4 @@
-package com.firom.bms.controllers;
+package com.firom.bms.controller;
 
 import com.firom.bms.dto.ledger.LedgerEntryResponse;
 import com.firom.bms.services.LedgerService;

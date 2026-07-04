@@ -1,4 +1,4 @@
-package com.firom.bms.controllers;
+package com.firom.bms.controller;
 
 import com.firom.bms.dto.dashboard.DashboardResponse;
 import com.firom.bms.services.DashboardService;

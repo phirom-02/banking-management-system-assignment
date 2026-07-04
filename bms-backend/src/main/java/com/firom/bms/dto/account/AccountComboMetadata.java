@@ -1,36 +1,28 @@
 package com.firom.bms.dto.account;
 
-import com.firom.bms.enums.AccountStatus;
-import com.firom.bms.enums.AccountType;
-
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 @SuppressWarnings("all")
-public class AccountResponse {
+public class AccountComboMetadata {
     private Integer id;
-    private String accountNumber;
     private Integer customerId;
     private String customerName;
-    private AccountType accountType;
+    private String accountType;
     private BigDecimal balance;
     private String currency;
-    private AccountStatus status;
-    private LocalDateTime createdAt;
+    private String status;
 
-    public AccountResponse() {
+    public AccountComboMetadata() {
     }
 
-    public AccountResponse(Integer id, String accountNumber, Integer customerId, String customerName, AccountType accountType, BigDecimal balance, String currency, AccountStatus status, LocalDateTime createdAt) {
+    public AccountComboMetadata(Integer id, Integer customerId, String customerName, String accountType, BigDecimal balance, String currency, String status) {
         this.id = id;
-        this.accountNumber = accountNumber;
         this.customerId = customerId;
         this.customerName = customerName;
         this.accountType = accountType;
         this.balance = balance;
         this.currency = currency;
         this.status = status;
-        this.createdAt = createdAt;
     }
 
     public Integer getId() {
@@ -39,14 +31,6 @@ public class AccountResponse {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getAccountNumber() {
-        return accountNumber;
-    }
-
-    public void setAccountNumber(String accountNumber) {
-        this.accountNumber = accountNumber;
     }
 
     public Integer getCustomerId() {
@@ -65,11 +49,11 @@ public class AccountResponse {
         this.customerName = customerName;
     }
 
-    public AccountType getAccountType() {
+    public String getAccountType() {
         return accountType;
     }
 
-    public void setAccountType(AccountType accountType) {
+    public void setAccountType(String accountType) {
         this.accountType = accountType;
     }
 
@@ -89,19 +73,11 @@ public class AccountResponse {
         this.currency = currency;
     }
 
-    public AccountStatus getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(AccountStatus status) {
+    public void setStatus(String status) {
         this.status = status;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
     }
 }

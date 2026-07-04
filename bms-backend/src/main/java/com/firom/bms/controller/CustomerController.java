@@ -1,5 +1,7 @@
-package com.firom.bms.controllers;
+package com.firom.bms.controller;
 
+import com.firom.bms.dto.Combo;
+import com.firom.bms.dto.customer.CustomerComboMetadata;
 import com.firom.bms.dto.customer.CustomerRequest;
 import com.firom.bms.dto.customer.CustomerResponse;
 import com.firom.bms.enums.CustomerStatus;
@@ -12,6 +14,8 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/customers")
@@ -26,7 +30,7 @@ public class CustomerController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<CustomerResponse> getById(@PathVariable Long id) {
+    public ResponseEntity<CustomerResponse> getById(@PathVariable Integer id) {
         return ResponseEntity.ok(customerService.getById(id));
     }
 
@@ -38,18 +42,24 @@ public class CustomerController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<CustomerResponse> update(@PathVariable Long id, @Valid @RequestBody CustomerRequest request) {
+    public ResponseEntity<CustomerResponse> update(@PathVariable Integer id, @Valid @RequestBody CustomerRequest request) {
         return ResponseEntity.ok(customerService.update(id, request));
     }
 
     @PatchMapping("/{id}/status")
-    public ResponseEntity<CustomerResponse> updateStatus(@PathVariable Long id, @RequestParam CustomerStatus status) {
+    public ResponseEntity<CustomerResponse> updateStatus(@PathVariable Integer id, @RequestParam CustomerStatus status) {
         return ResponseEntity.ok(customerService.updateStatus(id, status));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id) {
+    public ResponseEntity<Void> delete(@PathVariable Integer id) {
         customerService.delete(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/combo")
+    public ResponseEntity<List<Combo<CustomerComboMetadata>>> combo(
+            @RequestParam(required = false, defaultValue = "ACTIVE") String status) {
+        return ResponseEntity.ok(customerService.combo(status));
     }
 }
