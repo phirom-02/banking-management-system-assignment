@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.geekybyte.bmsgui.controller.DashboardController"
+      spacing="20">
+
+    <HBox alignment="CENTER_LEFT" spacing="12">
+        <Label text="Dashboard" styleClass="page-title"/>
+        <VBox HBox.hgrow="ALWAYS"/>
+        <Button text="Refresh" styleClass="button-secondary" onAction="#onRefresh"/>
+    </HBox>
+
+    <HBox spacing="16">
+        <VBox styleClass="card" spacing="6" HBox.hgrow="ALWAYS">
+            <Label text="TOTAL CUSTOMERS" styleClass="kpi-label"/>
+            <Label fx:id="totalCustomersLabel" text="—" styleClass="kpi-value"/>
+            <Label fx:id="activeCustomersLabel" text="" styleClass="kpi-label"/>
+        </VBox>
+        <VBox styleClass="card" spacing="6" HBox.hgrow="ALWAYS">
+            <Label text="TOTAL ACCOUNTS" styleClass="kpi-label"/>
+            <Label fx:id="totalAccountsLabel" text="—" styleClass="kpi-value"/>
+            <Label fx:id="accountBreakdownLabel" text="" styleClass="kpi-label"/>
+        </VBox>
+        <VBox styleClass="card" spacing="6" HBox.hgrow="ALWAYS">
+            <Label text="TOTAL BALANCE HELD" styleClass="kpi-label"/>
+            <Label fx:id="totalBalanceLabel" text="—" styleClass="kpi-value"/>
+        </VBox>
+        <VBox styleClass="card" spacing="6" HBox.hgrow="ALWAYS">
+            <Label text="TRANSACTIONS TODAY" styleClass="kpi-label"/>
+            <Label fx:id="transactionsTodayLabel" text="—" styleClass="kpi-value"/>
+        </VBox>
+    </HBox>
+
+    <VBox styleClass="card" spacing="10" VBox.vgrow="ALWAYS">
+        <Label text="Recent Activity" styleClass="section-title"/>
+        <TableView fx:id="activityTable" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="colReference" text="Reference" prefWidth="180"/>
+                <TableColumn fx:id="colType" text="Type" prefWidth="110"/>
+                <TableColumn fx:id="colFrom" text="From" prefWidth="120"/>
+                <TableColumn fx:id="colTo" text="To" prefWidth="120"/>
+                <TableColumn fx:id="colAmount" text="Amount" prefWidth="110"/>
+                <TableColumn fx:id="colStatus" text="Status" prefWidth="100"/>
+                <TableColumn fx:id="colWhen" text="When" prefWidth="150"/>
+            </columns>
+        </TableView>
+    </VBox>
+</VBox>

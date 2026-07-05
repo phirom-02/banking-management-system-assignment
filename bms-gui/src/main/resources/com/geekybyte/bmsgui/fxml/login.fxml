@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<StackPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="com.geekybyte.bmsgui.controller.LoginController"
+           styleClass="login-pane">
+
+    <VBox alignment="CENTER" maxWidth="360" styleClass="login-card" spacing="14">
+        <padding>
+            <Insets top="0" right="0" bottom="0" left="0"/>
+        </padding>
+
+        <Label text="Core Banking" styleClass="login-title"/>
+        <Label text="Management System — Admin Sign in" styleClass="login-subtitle"/>
+
+        <VBox spacing="6" style="-fx-padding: 16 0 0 0;">
+            <Label text="Username"/>
+            <TextField fx:id="usernameField" promptText="admin"/>
+        </VBox>
+
+        <VBox spacing="6">
+            <Label text="Password"/>
+            <PasswordField fx:id="passwordField" promptText="••••••••" onAction="#onLogin"/>
+        </VBox>
+
+        <Label fx:id="errorLabel" styleClass="error-text" wrapText="true" managed="false" visible="false"/>
+
+        <Button text="Sign in" styleClass="button-primary" maxWidth="Infinity" onAction="#onLogin"
+                style="-fx-padding: 10 0 10 0;"/>
+
+        <ProgressIndicator fx:id="loadingIndicator" visible="false" managed="false" maxWidth="24" maxHeight="24"/>
+
+        <Label text="Connects to the Core Banking REST API" styleClass="kpi-label" style="-fx-padding: 10 0 0 0;"/>
+    </VBox>
+</StackPane>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.geekybyte.bmsgui.controller.AccountDialogController"
+      spacing="10" prefWidth="420">
+    <padding><Insets top="20" right="24" bottom="20" left="24"/></padding>
+
+    <Label text="Open New Account" styleClass="page-title"/>
+
+    <Label text="Customer"/>
+    <ComboBox fx:id="customerComboBox" maxWidth="Infinity" promptText="Select a customer…"/>
+
+    <Label text="Account type"/>
+    <ChoiceBox fx:id="accountTypeChoice" maxWidth="Infinity"/>
+
+    <Label text="Opening balance (optional)"/>
+    <TextField fx:id="openingBalanceField" promptText="0.00"/>
+
+    <Label text="Currency"/>
+    <TextField fx:id="currencyField" text="USD"/>
+
+    <Label fx:id="errorLabel" styleClass="error-text" wrapText="true" managed="false" visible="false"/>
+
+    <HBox spacing="10" alignment="CENTER_RIGHT" style="-fx-padding: 14 0 0 0;">
+        <Button text="Cancel" styleClass="button-secondary" onAction="#onCancel"/>
+        <Button fx:id="saveButton" text="Open Account" styleClass="button-primary" onAction="#onSave"/>
+    </HBox>
+</VBox>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.geekybyte.bmsgui.controller.CustomerDialogController"
+      spacing="10" prefWidth="420">
+    <padding>
+        <Insets top="20" right="24" bottom="20" left="24"/>
+    </padding>
+
+    <Label fx:id="titleLabel" text="New Customer" styleClass="page-title"/>
+
+    <Label text="Full name"/>
+    <TextField fx:id="fullNameField"/>
+
+    <Label text="Email"/>
+    <TextField fx:id="emailField"/>
+
+    <Label text="Phone"/>
+    <TextField fx:id="phoneField"/>
+
+    <Label text="National ID"/>
+    <TextField fx:id="nationalIdField"/>
+
+    <Label text="Date of birth"/>
+    <DatePicker fx:id="dobPicker" maxWidth="Infinity"/>
+
+    <Label text="Address"/>
+    <TextArea fx:id="addressField" prefRowCount="2" wrapText="true"/>
+
+    <Label fx:id="errorLabel" styleClass="error-text" wrapText="true" managed="false" visible="false"/>
+
+    <HBox spacing="10" alignment="CENTER_RIGHT" style="-fx-padding: 14 0 0 0;">
+        <Button text="Cancel" styleClass="button-secondary" onAction="#onCancel"/>
+        <Button fx:id="saveButton" text="Save" styleClass="button-primary" onAction="#onSave"/>
+    </HBox>
+</VBox>
