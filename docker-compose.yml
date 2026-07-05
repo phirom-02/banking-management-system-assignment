@@ -1,0 +1,42 @@
+services:
+  postgres:
+    image: postgres
+    container_name: bms-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: bms
+      POSTGRES_USER: bms
+      POSTGRES_PASSWORD: change_me!
+    ports:
+      - "5432:5432"
+    volumes:
+      - bms-pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build: ./bms-backend/
+    container_name: bms-backend
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: bms
+      DB_USER: bms
+      DB_PASSWORD: change_me!
+      JWT_SECRET: ChangeThisSecretKeyInProductionEnvironmentPleaseMakeItLongEnough
+      JWT_EXPIRATION_MS: 86400000
+      CORS_ALLOWED_ORIGINS: "http://localhost:3000"
+      SEED_ADMIN_USERNAME: admin
+      SEED_ADMIN_PASSWORD: Admin@12345
+    ports:
+      - "8080:8080"
+
+volumes:
+  bms-pgdata:

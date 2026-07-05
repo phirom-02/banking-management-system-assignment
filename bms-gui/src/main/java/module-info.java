@@ -10,7 +10,14 @@ module com.geekybyte.bmsgui {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
+    requires com.fasterxml.jackson.core;
+    requires com.fasterxml.jackson.databind;
+    requires java.net.http;
+    requires com.fasterxml.jackson.datatype.jsr310;
 
     opens com.geekybyte.bmsgui to javafx.fxml;
+    opens com.geekybyte.bmsgui.controller to javafx.fxml;
+    opens com.geekybyte.bmsgui.model to javafx.base,
+            com.fasterxml.jackson.databind;
     exports com.geekybyte.bmsgui;
 }

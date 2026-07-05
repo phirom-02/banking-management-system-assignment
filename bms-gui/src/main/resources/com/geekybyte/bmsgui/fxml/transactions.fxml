@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.geekybyte.bmsgui.controller.TransactionsController"
+      spacing="16">
+
+    <Label text="Transactions" styleClass="page-title"/>
+
+    <HBox spacing="16">
+        <!-- Deposit -->
+        <VBox styleClass="card" spacing="8" prefWidth="270">
+            <Label text="Deposit" styleClass="section-title"/>
+            <Label text="Account"/>
+            <ComboBox fx:id="depositAccountComboBox" maxWidth="Infinity" promptText="Select an account…"/>
+            <Label text="Amount"/>
+            <TextField fx:id="depositAmountField" promptText="0.00"/>
+            <Label text="Description (optional)"/>
+            <TextField fx:id="depositDescField"/>
+            <Button text="Deposit" styleClass="button-primary" maxWidth="Infinity" onAction="#onDeposit"/>
+        </VBox>
+
+        <!-- Withdrawal -->
+        <VBox styleClass="card" spacing="8" prefWidth="270">
+            <Label text="Withdrawal" styleClass="section-title"/>
+            <Label text="Account"/>
+            <ComboBox fx:id="withdrawAccountComboBox" maxWidth="Infinity" promptText="Select an account…"/>
+            <Label text="Amount"/>
+            <TextField fx:id="withdrawAmountField" promptText="0.00"/>
+            <Label text="Description (optional)"/>
+            <TextField fx:id="withdrawDescField"/>
+            <Button text="Withdraw" styleClass="button-primary" maxWidth="Infinity" onAction="#onWithdraw"/>
+        </VBox>
+
+        <!-- Transfer -->
+        <VBox styleClass="card" spacing="8" prefWidth="270">
+            <Label text="Transfer" styleClass="section-title"/>
+            <Label text="Source account"/>
+            <ComboBox fx:id="transferSourceComboBox" maxWidth="Infinity" promptText="Select source…"/>
+            <Label text="Destination account"/>
+            <ComboBox fx:id="transferDestComboBox" maxWidth="Infinity" promptText="Select destination…"/>
+            <Label text="Amount"/>
+            <TextField fx:id="transferAmountField" promptText="0.00"/>
+            <Label text="Description (optional)"/>
+            <TextField fx:id="transferDescField"/>
+            <Button text="Transfer" styleClass="button-primary" maxWidth="Infinity" onAction="#onTransfer"/>
+        </VBox>
+    </HBox>
+
+    <VBox styleClass="card" spacing="10" VBox.vgrow="ALWAYS">
+        <HBox alignment="CENTER_LEFT" spacing="12">
+            <Label text="Transaction History" styleClass="section-title"/>
+            <VBox HBox.hgrow="ALWAYS"/>
+            <ComboBox fx:id="filterAccountComboBox" prefWidth="260" promptText="All accounts"/>
+            <Button text="Filter" styleClass="button-secondary" onAction="#onFilterHistory"/>
+            <Button text="Show All" styleClass="button-secondary" onAction="#onShowAll"/>
+        </HBox>
+        <TableView fx:id="table" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="colReference" text="Reference" prefWidth="180"/>
+                <TableColumn fx:id="colType" text="Type" prefWidth="100"/>
+                <TableColumn fx:id="colFrom" text="From" prefWidth="120"/>
+                <TableColumn fx:id="colTo" text="To" prefWidth="120"/>
+                <TableColumn fx:id="colAmount" text="Amount" prefWidth="100"/>
+                <TableColumn fx:id="colStatus" text="Status" prefWidth="100"/>
+                <TableColumn fx:id="colPerformedBy" text="By" prefWidth="90"/>
+                <TableColumn fx:id="colWhen" text="When" prefWidth="150"/>
+            </columns>
+        </TableView>
+        <HBox alignment="CENTER_RIGHT" spacing="10">
+            <Button fx:id="prevButton" text="◀ Prev" styleClass="button-secondary" onAction="#onPrevPage"/>
+            <Label fx:id="pageLabel" text="Page 1 of 1"/>
+            <Button fx:id="nextButton" text="Next ▶" styleClass="button-secondary" onAction="#onNextPage"/>
+        </HBox>
+    </VBox>
+</VBox>

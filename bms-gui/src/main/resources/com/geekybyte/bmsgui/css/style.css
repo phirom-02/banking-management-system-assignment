@@ -1,0 +1,176 @@
+* {
+    -fx-primary: #1b3a6b;
+    -fx-primary-light: #2c5aa0;
+    -fx-accent: #2f9e44;
+    -fx-danger: #c92a2a;
+    -fx-bg: #f4f6f9;
+    -fx-card: #ffffff;
+    -fx-border-soft: #e1e5ea;
+    -fx-text-muted: #6b7280;
+}
+
+.root {
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    -fx-font-size: 13px;
+    -fx-background-color: -fx-bg;
+}
+
+/* ---------- Login screen ---------- */
+.login-pane {
+    -fx-background-color: linear-gradient(to bottom right, #1b3a6b, #2c5aa0);
+}
+
+.login-card {
+    -fx-background-color: -fx-card;
+    -fx-background-radius: 10;
+    -fx-padding: 36;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 20, 0, 0, 8);
+}
+
+.login-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-primary;
+}
+
+.login-subtitle {
+    -fx-font-size: 12px;
+    -fx-text-fill: -fx-text-muted;
+}
+
+/* ---------- Sidebar ---------- */
+.sidebar {
+    -fx-background-color: -fx-primary;
+    -fx-padding: 0 0 16 0;
+}
+
+.sidebar-brand {
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-padding: 24 20 24 20;
+}
+
+.sidebar-user {
+    -fx-text-fill: #cfe0f5;
+    -fx-font-size: 11px;
+    -fx-padding: 0 20 20 20;
+}
+
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #d7e3f5;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 12 20 12 20;
+    -fx-font-size: 13px;
+    -fx-cursor: hand;
+    -fx-max-width: infinity;
+    -fx-background-radius: 0;
+}
+
+.nav-button:hover {
+    -fx-background-color: -fx-primary-light;
+    -fx-text-fill: white;
+}
+
+.nav-button-active {
+    -fx-background-color: -fx-primary-light;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.nav-logout {
+    -fx-background-color: transparent;
+    -fx-text-fill: #ffb3b3;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 12 20 12 20;
+    -fx-cursor: hand;
+    -fx-max-width: infinity;
+}
+
+.nav-logout:hover {
+    -fx-text-fill: white;
+    -fx-background-color: -fx-danger;
+}
+
+/* ---------- Generic content ---------- */
+.content-area {
+    -fx-background-color: -fx-bg;
+    -fx-padding: 24;
+}
+
+.page-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1f2937;
+}
+
+.card {
+    -fx-background-color: -fx-card;
+    -fx-background-radius: 8;
+    -fx-border-color: -fx-border-soft;
+    -fx-border-radius: 8;
+    -fx-padding: 18;
+}
+
+.kpi-value {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-primary;
+}
+
+.kpi-label {
+    -fx-font-size: 11px;
+    -fx-text-fill: -fx-text-muted;
+}
+
+.section-title {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1f2937;
+}
+
+/* ---------- Buttons ---------- */
+.button-primary {
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+    -fx-padding: 8 18 8 18;
+    -fx-cursor: hand;
+}
+
+.button-primary:hover {
+    -fx-background-color: -fx-primary-light;
+}
+
+.button-danger {
+    -fx-background-color: -fx-danger;
+    -fx-text-fill: white;
+    -fx-background-radius: 5;
+    -fx-padding: 8 18 8 18;
+    -fx-cursor: hand;
+}
+
+.button-secondary {
+    -fx-background-color: #e9edf2;
+    -fx-text-fill: #1f2937;
+    -fx-background-radius: 5;
+    -fx-padding: 8 18 8 18;
+    -fx-cursor: hand;
+}
+
+/* ---------- Status badges (set via inline style class in controllers) ---------- */
+.badge-active { -fx-text-fill: #2f9e44; -fx-font-weight: bold; }
+.badge-frozen { -fx-text-fill: #e8590c; -fx-font-weight: bold; }
+.badge-closed { -fx-text-fill: #868e96; -fx-font-weight: bold; }
+.badge-blacklisted { -fx-text-fill: #c92a2a; -fx-font-weight: bold; }
+
+.error-text {
+    -fx-text-fill: -fx-danger;
+    -fx-font-size: 12px;
+}
+
+TableView {
+    -fx-background-color: -fx-card;
+}

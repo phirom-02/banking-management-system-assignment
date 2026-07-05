@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.geekybyte.bmsgui.controller.LedgerController"
+      spacing="16">
+
+    <HBox alignment="CENTER_LEFT" spacing="12">
+        <Label text="General Ledger" styleClass="page-title"/>
+        <VBox HBox.hgrow="ALWAYS"/>
+        <ComboBox fx:id="filterAccountComboBox" prefWidth="260" promptText="All accounts"/>
+        <Button text="Filter" styleClass="button-secondary" onAction="#onFilter"/>
+        <Button text="Show All" styleClass="button-secondary" onAction="#onShowAll"/>
+    </HBox>
+
+    <Label text="Every transaction posts a matching DEBIT and CREDIT entry — the books always balance."
+           styleClass="kpi-label"/>
+
+    <VBox styleClass="card" spacing="10" VBox.vgrow="ALWAYS">
+        <TableView fx:id="table" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="colTransactionRef" text="Transaction Ref" prefWidth="180"/>
+                <TableColumn fx:id="colAccount" text="Account" prefWidth="130"/>
+                <TableColumn fx:id="colEntryType" text="Entry" prefWidth="90"/>
+                <TableColumn fx:id="colAmount" text="Amount" prefWidth="110"/>
+                <TableColumn fx:id="colBalanceAfter" text="Balance After" prefWidth="120"/>
+                <TableColumn fx:id="colWhen" text="When" prefWidth="150"/>
+            </columns>
+        </TableView>
+
+        <HBox alignment="CENTER_RIGHT" spacing="10">
+            <Button fx:id="prevButton" text="◀ Prev" styleClass="button-secondary" onAction="#onPrevPage"/>
+            <Label fx:id="pageLabel" text="Page 1 of 1"/>
+            <Button fx:id="nextButton" text="Next ▶" styleClass="button-secondary" onAction="#onNextPage"/>
+        </HBox>
+    </VBox>
+</VBox>

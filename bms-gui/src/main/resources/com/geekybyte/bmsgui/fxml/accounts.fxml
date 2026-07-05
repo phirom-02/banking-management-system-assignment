@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.geekybyte.bmsgui.controller.AccountsController"
+      spacing="16">
+
+    <HBox alignment="CENTER_LEFT" spacing="12">
+        <Label text="Accounts" styleClass="page-title"/>
+        <VBox HBox.hgrow="ALWAYS"/>
+        <ComboBox fx:id="customerFilterComboBox" prefWidth="240" promptText="All customers"/>
+        <ChoiceBox fx:id="statusFilter" prefWidth="140"/>
+        <Button text="Filter" styleClass="button-secondary" onAction="#onFilter"/>
+        <Button text="+ Open Account" styleClass="button-primary" onAction="#onNew"/>
+    </HBox>
+
+    <VBox styleClass="card" spacing="10" VBox.vgrow="ALWAYS">
+        <TableView fx:id="table" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="colAccountNumber" text="Account Number" prefWidth="150"/>
+                <TableColumn fx:id="colCustomer" text="Customer" prefWidth="180"/>
+                <TableColumn fx:id="colType" text="Type" prefWidth="100"/>
+                <TableColumn fx:id="colBalance" text="Balance" prefWidth="120"/>
+                <TableColumn fx:id="colCurrency" text="Currency" prefWidth="80"/>
+                <TableColumn fx:id="colStatus" text="Status" prefWidth="90"/>
+                <TableColumn fx:id="colActions" text="Actions" prefWidth="260"/>
+            </columns>
+        </TableView>
+
+        <HBox alignment="CENTER_RIGHT" spacing="10">
+            <Button fx:id="prevButton" text="◀ Prev" styleClass="button-secondary" onAction="#onPrevPage"/>
+            <Label fx:id="pageLabel" text="Page 1 of 1"/>
+            <Button fx:id="nextButton" text="Next ▶" styleClass="button-secondary" onAction="#onNextPage"/>
+        </HBox>
+    </VBox>
+</VBox>
