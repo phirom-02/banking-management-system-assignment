@@ -35,12 +35,41 @@ public interface AccountRepository extends JpaRepository<Account, Integer> {
     @Query("select a from Account a where a.accountNumber = :accountNumber")
     Optional<Account> findByAccountNumberForUpdate(@Param("accountNumber") String accountNumber);
 
+    @Query("""
+            select a
+            from Account a
+            join fetch a.customer
+            order by a.accountNumber asc
+            """)
     List<Account> findAllByOrderByAccountNumberAsc();
 
-    List<Account> findByStatusOrderByAccountNumberAsc(AccountStatus status);
+    @Query("""
+            select a
+            from Account a
+            join fetch a.customer
+            where a.status = :status
+            order by a.accountNumber asc
+            """)
+    List<Account> findByStatusOrderByAccountNumberAsc(@Param("status") AccountStatus status);
 
-    List<Account> findByCustomerIdOrderByAccountNumberAsc(Integer customerId);
+    @Query("""
+            select a
+            from Account a
+            join fetch a.customer
+            where a.customer.id = :customerId
+            order by a.accountNumber asc
+            """)
+    List<Account> findByCustomerIdOrderByAccountNumberAsc(@Param("customerId") Integer customerId);
 
-    List<Account> findByCustomerIdAndStatusOrderByAccountNumberAsc(Integer customerId, AccountStatus status);
-
+    @Query("""
+            select a
+            from Account a
+            join fetch a.customer
+            where a.customer.id = :customerId and a.status = :status
+            order by a.accountNumber asc
+            """)
+    List<Account> findByCustomerIdAndStatusOrderByAccountNumberAsc(
+            @Param("customerId") Integer customerId,
+            @Param("status") AccountStatus status
+    );
 }
