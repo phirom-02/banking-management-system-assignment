@@ -98,7 +98,7 @@ what's covered here.
 | Database      | PostgreSQL 16                                                              |
 | Frontend      | Java 21, JavaFX 21 (Controls + FXML)                                       |
 | Frontend HTTP | `java.net.http.HttpClient` + Jackson (no extra HTTP library)               |
-| Build tools   | Maven (both subprojects)                                                   |
+| Build tools   | Maven (GUI) | Gradles (Backend)                                              |
 | Packaging     | Docker / Docker Compose (backend), `jpackage` app-image (client)           |
 | VCS           | Git                                                                        |
 
@@ -110,7 +110,8 @@ what's covered here.
 | ------------------------------- | ------------------------------------------------------------------ | -------------------------------------------------------------- |
 | **Docker** + **Docker Compose** | Backend + PostgreSQL                                               | Docker Desktop includes both                                   |
 | **JDK 21+**                     | Building/running the client (and the backend, if not using Docker) | e.g. [Adoptium Temurin](https://adoptium.net)                  |
-| **Maven 3.9+**                  | Building the client                                                | Backend can be built by Docker without Maven installed locally |
+| **Maven 3.9+**                  | Building the client                                                |                                                                |
+| **Gradles 4.1+**                  | Building the client                                              | Backend can be built by Docker without Gradles installed locally |
 | **curl**                        | Used by `install.sh` to check backend health                       | Preinstalled on macOS/Linux; on Windows use WSL or Git Bash    |
 
 You do **not** need PostgreSQL installed separately — Docker Compose runs it
